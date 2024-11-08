@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacient Details</title>
+    <style>
+        .details {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            width: 50%;
+        }
+        .details h1 {
+            text-align: center;
+        }
+        .details dl {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .details dt {
+            font-weight: bold;
+        }
+        .details dd {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+        <h1>Pacient Details</h1>
+        <dl>
+            <dt>Name: {{ pacient.nume }}</dt>
+            <dt>Last name: {{ pacient.prenume }}</dt>
+            <dt>Email: {{ pacient.email }}</dt>
+            <dt>Age: {{ pacient.varsta }}</dt>
+            <dt>M/F: {{ pacient.gen }}</dt>
+            <dt>Stage: {{ pacient.stadiu }}</dt>
+        </dl>
+       <h1>Pacient History</h1>
+<dl>
+    <dt>Created At: {{ pacient.createdAt }}</dt>
+    <dt>Symptoms:</dt>
+    <dd>
+        <ul>
+            {% for simptom in pacient.istoric %}
+                <li>{{ simptom }}</li>
+            {% endfor %}
+        </ul>
+    </dd>
+</dl>
+        <h1>Test Results</h1>
+        <dl>
+            {% for test in pacient.teste %}
+                <dt>Test Name: {{ test.nume_test }}</dt>
+                <dt>Test Score: {{ test.scor_test }}</dt>
+                <dt>Test Result: {{ test.rezultat }}</dt>
+                <hr>
+            {% endfor %}
+        </dl>
+    </div>
+</body>
+</html>
